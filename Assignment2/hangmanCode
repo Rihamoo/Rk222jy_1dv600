@@ -1,0 +1,135 @@
+package asg2;
+
+import java.util.Scanner;
+
+public class hang2 {
+
+	private static String[] words = {"terminator", "banana", "computer", "cow", 
+			"rain", "water" ,"mark" , "equal" , "fungus" , "magic" , "kiss" , "web"};
+	private static String word = words[(int) (Math.random() * words.length)];
+	private static String aster = new String(new char[word.length()]).replace("\0", "*");
+	private static int count = 0;
+
+	public static void main(String[] args) {
+		Scanner enter = new Scanner(System.in);
+
+		while (count < 7
+				
+				&& aster.contains("*")) {
+			System.out.println("              GUESS THE WORD BEHIND THE STARS");
+			System.out.println("  Chose letters from the keyboard to find the hidden word");
+			System.out.println(aster);
+			String guess = enter.next();
+			hang(guess);
+		}
+		enter.close();
+	}
+
+	public static void hang(String guess) {
+		String risk = ""; //newasterisk
+		for (int i = 0; i < word.length(); i++) {
+			if (word.charAt(i) == guess.charAt(0)) {
+				risk += guess.charAt(0);
+			} else if (aster.charAt(i) != '*') {
+				risk += word.charAt(i);
+			} else {
+				risk += "*";
+			}
+		}
+
+		if (aster.equals(risk)) {
+			count++;
+			THEhangmanImage();
+		} else {
+			aster = risk;
+		}
+		if (aster.equals(word)) {
+			System.out.println("  GOoOOoOoD GUESS! CONGRATULATION YOU WIN :) "
+					+ "THIS WAS THE HIDEN WORD   " + word);
+		}
+	}
+
+	public static void THEhangmanImage() {
+		if (count == 1) {
+			System.out.println("OoPS! IT WAS A WRONG GUESS , WOULD YOU TRY AGAIN ");
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("___|___");
+			System.out.println();
+		}
+		if (count == 2) {
+			System.out.println("OoPS! IT WAS A WRONG GUESS , WOULD YOU TRY AGAIN ");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("___|___");
+		}
+		if (count == 3) {
+			System.out.println("OoPS! IT WAS A WRONG GUESS , WOULD YOU TRY AGAIN ");
+			System.out.println("   ____________");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   | ");
+			System.out.println("___|___");
+		}
+		if (count == 4) {
+			System.out.println(" OoPS! IT WAS A WRONG GUESS , WOULD YOU TRY AGAIN ");
+			System.out.println("   ____________");
+			System.out.println("   |          _|_");
+			System.out.println("   |         /. .\\");
+			System.out.println("   |         \\_@_/");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("   |");
+			System.out.println("___|___");
+		}
+		if (count == 5) {
+			System.out.println("OoPS! IT WAS A WRONG GUESS , WOULD YOU TRY AGAIN ");
+			System.out.println("   ____________");
+			System.out.println("   |          _|_");
+			System.out.println("   |         /. .\\");
+			System.out.println("   |         \\_@_/");
+			System.out.println("   |           |");
+			System.out.println("   |           |");
+			System.out.println("   |");
+			System.out.println("___|___");
+		}
+		if (count == 6) {
+			System.out.println("OoPS! IT WAS A WRONG GUESS , WOULD YOU TRY AGAIN ");
+			System.out.println("   ____________");
+			System.out.println("   |          _|_");
+			System.out.println("   |         /. .\\");
+			System.out.println("   |         \\_@_/");
+			System.out.println("   |           |");
+			System.out.println("   |           |");
+			System.out.println("   |          / \\ ");
+			System.out.println("___|___      /   \\");
+		}
+		if (count == 7) {
+			System.out.println("GAME OVER!");
+			System.out.println("   ____________");
+			System.out.println("   |          _|_");
+			System.out.println("   |         /. .\\");
+			System.out.println("   |         \\_@_/");
+			System.out.println("   |          _|_");
+			System.out.println("   |         / | \\");
+			System.out.println("   |          / \\ ");
+			System.out.println("   |         /   \\");
+			System.out.println("   |               ");
+			System.out.println("___|___            ");
+			System.out.println("GAME OVER! YOU LOSE ,YOU HANGED THE MAN "
+					+ "the hidden word was : " + word);
+		}
+	}
+}
+
